@@ -1,43 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SpinTheWheelOut — Cryptographic Randomness & Embed Documentation</title>
-  <meta name="description" content="Technical guide and embed documentation for SpinTheWheelOut, a free browser-based random wheel spinner powered by the Web Cryptography API.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpinTheWheelOut — Free Online Random Wheel Spinner</title>
+  <meta name="description" content="SpinTheWheelOut.com is a free, customizable random wheel spinner for instant decisions, giveaways, raffles, and classroom games. 100% private and browser-based." />
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; max-width: 760px; margin: 40px auto; padding: 0 20px; color: #1f2937; }
-    h1, h2 { color: #111827; }
-    .btn { display: inline-block; background: #2563eb; color: #fff; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 10px 0; }
-    code, pre { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
-    pre { padding: 14px; overflow-x: auto; }
-    .card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; margin: 20px 0; }
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+    }
+    .hero-image-wrap {
+      display: block;
+      background: #f1f5f9;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-image-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: opacity 0.2s ease;
+    }
+    .hero-image-wrap:hover img {
+      opacity: 0.96;
+    }
+    .content {
+      padding: 2rem 2.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    h2 {
+      font-size: 1.35rem;
+      margin: 1.75rem 0 0.75rem;
+      color: var(--text);
+    }
+    p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .cta-row {
+      margin: 1.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+    .btn-secondary {
+      background: #e0f2fe;
+      color: var(--accent-hover);
+    }
+    .btn-secondary:hover {
+      background: #bae6fd;
+    }
+    ul {
+      padding-left: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .tool-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .tool-card {
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #f8fafc;
+    }
+    .tool-card strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: #f8fafc;
+    }
+    @media (max-width: 600px) {
+      .content { padding: 1.5rem; }
+      h1 { font-size: 1.6rem; }
+    }
   </style>
 </head>
 <body>
-  <h1>SpinTheWheelOut — Developer & Streamer Guide</h1>
-  <p><a href="https://spinthewheelout.com">SpinTheWheelOut</a> is a browser-based random picker wheel built for unbiased giveaways, classroom selections, and instant decision-making without logins or server-side tracking.</p>
-  <a class="btn" href="https://spinthewheelout.com">Launch SpinTheWheelOut →</a>
+  <main class="container">
+    <!-- Screenshot at the top, clickable to your website -->
+    <a class="hero-image-wrap" href="https://spinthewheelout.com/" target="_blank" rel="noopener">
+      <img src="screenshot.jpg" alt="SpinTheWheelOut.com — Free Random Wheel Spinner Interface" />
+    </a>
 
-  <div class="card">
-    <h2>1. Cryptographic Fairness Architecture</h2>
-    <p>Standard JavaScript spinners rely on <code>Math.random()</code>, which uses a pseudo-random number generator (PRNG) susceptible to seed predictability. SpinTheWheelOut uses the browser's hardware-backed <strong>Web Cryptography API</strong>:</p>
-    <pre><code>const array = new Uint32Array(1);
-window.crypto.getRandomValues(array);</code></pre>
-    <p>This ensures every wheel slice maintains an exact, uniform mathematical probability across up to 1,000 custom entries.</p>
-  </div>
+    <!-- Descriptions & Backlinks below -->
+    <div class="content">
+      <h1>SpinTheWheelOut — Free Random Wheel Spinner</h1>
+      <p>
+        <a href="https://spinthewheelout.com/" target="_blank" rel="noopener"><strong>SpinTheWheelOut.com</strong></a>
+        is a fast, free, and customizable online spinning wheel built for instant decision-making, live raffles, classroom games, and team picks—with no login or registration required.
+      </p>
 
-  <div class="card">
-    <h2>2. Specialized Picker Modes</h2>
-    <ul>
-      <li><strong>Classroom & Raffle Draws:</strong> Use the <a href="https://spinthewheelout.com">Wheel of Names</a> mode with automatic winner elimination to prevent duplicate picks.</li>
-      <li><strong>Stream Overlays:</strong> Add the spinner directly to OBS Studio or Streamlabs as a Browser Source for live Twitch and YouTube giveaways.</li>
-      <li><strong>Zero Data Collection:</strong> All entries and spin histories stay 100% inside local browser memory (FERPA &amp; COPPA friendly).</li>
-    </ul>
-  </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://spinthewheelout.com/" target="_blank" rel="noopener">Launch SpinTheWheelOut.com &rarr;</a>
+        <a class="btn btn-secondary" href="https://spinthewheelout.com/wheel-of-names/" target="_blank" rel="noopener">Try Wheel of Names</a>
+        <a class="btn btn-secondary" href="https://spinthewheelout.com/giveaway-wheel/" target="_blank" rel="noopener">Giveaway Wheel</a>
+      </div>
 
-  <footer>
-    <p>Official Project: <a href="https://spinthewheelout.com">https://spinthewheelout.com</a></p>
-  </footer>
+      <h2>Key Features</h2>
+      <ul>
+        <li><strong>Up to 1,000 Custom Entries:</strong> Paste or bulk-import up to 1,000 names or choices with zero lag.</li>
+        <li><strong>100% Client-Side Privacy:</strong> All entries and spins run locally in your browser—nothing is stored or sent to external servers.</li>
+        <li><strong>True Cryptographic Randomness:</strong> Powered by the browser's Web Cryptography API (<code>crypto.getRandomValues()</code>) for unbiased results.</li>
+        <li><strong>Ready-to-Use Presets:</strong> Includes quick templates for Food, Yes/No, Truth/Dare, Teams, and Giveaways.</li>
+        <li><strong>Stream &amp; Share Ready:</strong> Features OBS overlay support, website embed codes, sound effects, and one-click shareable wheel links.</li>
+      </ul>
+
+      <h2>Popular Wheel Tools</h2>
+      <div class="tool-links">
+        <div class="tool-card">
+          <strong><a href="https://spinthewheelout.com/wheel-of-names/" target="_blank" rel="noopener">Wheel of Names</a></strong>
+          <span>Random name picker with automatic winner elimination for classrooms and teams.</span>
+        </div>
+        <div class="tool-card">
+          <strong><a href="https://spinthewheelout.com/giveaway-wheel/" target="_blank" rel="noopener">Giveaway Wheel</a></strong>
+          <span>Transparent raffle and live contest winner picker for streamers and events.</span>
+        </div>
+        <div class="tool-card">
+          <strong><a href="https://spinthewheelout.com/spin-the-wheel/" target="_blank" rel="noopener">Spin the Wheel Hub</a></strong>
+          <span>Explore all specialized spinners, presets, and decision-making tools.</span>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Visit <a href="https://spinthewheelout.com/" target="_blank" rel="noopener">SpinTheWheelOut.com</a> to start spinning for free.
+    </footer>
+  </main>
 </body>
 </html>
