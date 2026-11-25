@@ -1,7 +1,5 @@
 # 🎡 SpinTheWheelOut — Free Random Wheel Spinner
 
-[![SpinTheWheelOut Screenshot](spinthewheel screenshot.jpg)](https://spinthewheelout.com/)
-
 **[SpinTheWheelOut.com](https://spinthewheelout.com/)** is a free, customizable online spinning wheel for instant decisions, giveaways, raffles, and classroom games—no account or login required.
 
 👉 **Live Website:** [https://spinthewheelout.com/](https://spinthewheelout.com/)
